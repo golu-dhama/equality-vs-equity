@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Golu" />
+    <meta
+      name="description"
+      content="Educational project explaining Equality vs Equity with interactive quiz"
+    />
+    <title>Equality vs Equity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ================= CONTROL PANEL ================= -->
+    <div class="control-panel">
+      <div class="lang-box">
+        <span class="label">Language:</span>
+        <select id="langSelect">
+          <option value="hi">Hindi 🇮🇳</option>
+          <option value="en">English 🇬🇧</option>
+        </select>
+      </div>
+
+      <div class="theme-box">
+        <span class="label">Theme:</span>
+        <select id="themeSelect">
+          <option value="system">System 💻</option>
+          <option value="light">Light 🌞</option>
+          <option value="dark">Dark 🌙</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main>
+      <section class="feature">
+        <!-- Title -->
+        <h1 data-key="title"></h1>
+
+        <!-- Intro Text -->
+        <p class="intro" data-key="intro"></p>
+
+        <!-- ================= CARDS SECTION ================= -->
+        <div class="cards">
+          <!-- PRIVILEGE CARD -->
+          <div class="card privilege" tabindex="0">
+            <div class="card-header">
+              <span class="icon">💪</span>
+              <h3 data-key="priv_title"></h3>
+            </div>
+
+            <p data-key="priv_text"></p>
+          </div>
+
+          <!-- EQUITY CARD -->
+          <div class="card equity" tabindex="0">
+            <div class="card-header">
+              <span class="icon">🤝</span>
+              <h3 data-key="equity_title"></h3>
+            </div>
+
+            <p data-key="equity_text"></p>
+          </div>
+
+          <!-- STRUGGLE CARD -->
+          <div class="card struggle" tabindex="0">
+            <div class="card-header">
+              <span class="icon">📈</span>
+              <h3 data-key="struggle_title"></h3>
+            </div>
+
+            <p data-key="struggle_text"></p>
+          </div>
+
+          <!-- JUSTICE CARD -->
+          <div class="card justice" tabindex="0">
+            <div class="card-header">
+              <span class="icon">⚖️</span>
+              <h3 data-key="justice_title"></h3>
+            </div>
+
+            <p data-key="justice_text"></p>
+          </div>
+        </div>
+        <!-- End Cards -->
+      </section>
+
+      <button id="startQuiz" class="quiz-btn">Take Quiz</button>
+
+      <!-- ================= QUIZ SECTION ================= -->
+      <section class="quiz-section">
+        <div id="quizArea" style="display: none">
+          <h2>Quick Quiz</h2>
+
+          <div id="quizContainer"></div>
+
+          <button id="submitQuiz" class="quiz-btn">Submit Answers</button>
+
+          <p id="quizResult"></p>
+
+          <button
+            id="restartQuiz"
+            class="quiz-btn restart"
+            style="display: none"
+          >
+            Restart Quiz
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="logic.js"></script>
+  </body>
+</html>

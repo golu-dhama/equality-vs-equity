@@ -1,0 +1,436 @@
+/* ===================================================== */
+/* 1. CSS VARIABLES                                      */
+/* ===================================================== */
+
+:root {
+  --bg-color: #f5f5f5;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --text-light: #555555;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================================== */
+/* 2. RESET & GLOBAL                                     */
+/* ===================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-color);
+
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ===================================================== */
+/* 3. MAIN LAYOUT                                        */
+/* ===================================================== */
+
+.feature {
+  max-width: 1100px;
+  margin: 30px auto 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.feature h1 {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+
+  font-size: 2.2rem;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+.intro {
+  margin: 14px 0 70px;
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: var(--text-light);
+}
+
+/* ===================================================== */
+/* 4. GRID SYSTEM                                        */
+/* ===================================================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  grid-template-areas:
+    "priv equity strug"
+    ".    justice   .";
+}
+
+/* ===================================================== */
+/* 5. CARD BASE STYLES                                   */
+/* ===================================================== */
+
+.card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px var(--shadow-color);
+  text-align: left;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card h3 {
+  font-family: "Poppins", sans-serif;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+.card p {
+  font-size: 1rem; /* slightly bigger */
+  line-height: 1.8; /* more breathing space */
+  color: var(--text-light);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+/* ===================================================== */
+/* 6. CARD POSITIONING & SPECIAL STYLES                  */
+/* ===================================================== */
+
+.privilege {
+  grid-area: priv;
+  border: 2px solid #4f9cff;
+}
+
+.equity {
+  grid-area: equity;
+  transform: translateY(-30px);
+  padding: 32px;
+  box-shadow: 0 20px 30px var(--shadow-color);
+  border: 2px solid #3bb54a;
+}
+
+.struggle {
+  grid-area: strug;
+  border: 2px solid #f39c12;
+}
+
+.justice {
+  grid-area: justice;
+  border: 2px solid #9b59b6;
+}
+
+/* ===================================================== */
+/* 7. CARD INTERACTIONS                                  */
+/* ===================================================== */
+
+.card:not(.equity):hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 30px var(--shadow-color);
+}
+
+.equity:hover {
+  box-shadow: 0 26px 40px var(--shadow-color);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+/* ===================================================== */
+/* 8. LANGUAGE CHANGE ANIMATIONS                         */
+/* ===================================================== */
+
+.language-fade {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.language-visible {
+  opacity: 1;
+}
+
+/* ===================================================== */
+/* 8.5 QUIZ FORM ELEMENTS                                */
+/* ===================================================== */
+
+.options input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* ===================================================== */
+/* 9. CONTROL PANEL (THEME + LANGUAGE)                   */
+/* ===================================================== */
+
+.control-panel {
+  position: fixed;
+  top: 10px;
+  right: 5px;
+
+  display: flex;
+  gap: 20px;
+
+  background: #ffeb3b;
+  padding: 5px 10px;
+  border-radius: 10px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  will-change: transform, opacity;
+
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+
+.control-panel.hide {
+  transform: translateY(-110%);
+  opacity: 0;
+}
+
+.control-panel.hidden-complete {
+  pointer-events: none;
+}
+
+.control-panel:not(.hide) {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.control-panel select {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: white;
+  cursor: pointer;
+}
+
+/* ===================================================== */
+/* 10. DARK MODE                                         */
+/* ===================================================== */
+
+body.dark {
+  --bg-color: #0f0f0f;
+  --card-bg: #181818;
+  --text-color: #e5e5e5;
+  --text-light: #bfbfbf;
+  --shadow-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark .control-panel {
+  background: #1a3d2f;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .label {
+  color: #ffffff;
+}
+
+body.dark .control-panel select {
+  background: #0f2a20;
+  color: #ffffff;
+  border: 1px solid #2ecc71;
+}
+
+body.dark .icon {
+  opacity: 0.9;
+}
+
+/* ===================================================== */
+/* 11. CONTROL PANEL INTERACTIONS                        */
+/* ===================================================== */
+
+.control-panel select:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+body.dark .control-panel select:focus-visible {
+  outline: 3px solid #2ecc71;
+}
+
+body.dark .control-panel select:hover {
+  border-color: #27ae60;
+}
+
+#startQuiz:focus-visible,
+#submitQuiz:focus-visible,
+#restartQuiz:focus-visible {
+  outline: 3px solid #3bb54a;
+  outline-offset: 3px;
+}
+
+/* ===================================================== */
+/* QUIZ SECTION                                          */
+/* ===================================================== */
+
+.quiz-section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.quiz-section h2 {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.quiz-question {
+  background: var(--card-bg);
+  padding: 16px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+.options {
+  margin-top: 10px;
+}
+
+.options label {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.quiz-btn {
+  padding: 10px 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #3bb54a;
+  color: white;
+  cursor: pointer;
+}
+
+.quiz-btn.restart {
+  background: #4f9cff;
+}
+
+#startQuiz {
+  display: block;
+  margin: 20px auto;
+  font-size: 1rem;
+  padding: 12px 20px;
+}
+
+body.dark .quiz-question {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+body.dark .quiz-section h2 {
+  color: var(--text-color);
+}
+
+body.dark .options label {
+  color: var(--text-light);
+}
+
+body.dark #quizResult {
+  color: var(--text-color);
+}
+
+.options input[type="radio"]:focus-visible {
+  outline: 2px solid #3bb54a;
+  outline-offset: 3px;
+}
+
+/* ===================================================== */
+/* 12. GLOBAL TRANSITIONS                                */
+/* ===================================================== */
+
+.card,
+.control-panel,
+.control-panel select {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ===================================================== */
+/* 13. RESPONSIVE DESIGN                                 */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "priv"
+      "equity"
+      "strug"
+      "justice";
+  }
+
+  .equity {
+    transform: none;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .feature h1 {
+    font-size: 1.8rem;
+  }
+  .feature {
+    margin-top: 60px;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ===================================================== */
+/* 14. ACCESSIBILITY - REDUCED MOTION                    */
+/* ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
