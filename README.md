@@ -23,8 +23,12 @@ A simple educational web project to explain the difference between Equality and 
 - CSS
 - JavaScript
 
+## 🌐 Live Preview
+[![Live Demo]](https://golu-dhama.github.io/equality-vs-equity/)
+
 ## How to Use
 Open index.html in browser
 
 ## Author
 Golu
+
